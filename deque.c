@@ -101,11 +101,13 @@ deque_push(struct deque * d,void * data,int after){
 	d->q[pos].data = data;
 }
 
-static inline int count_q(struct deque * d){
-	return d->head+d->size-d->tail-1;
+static inline int
+count_q(struct deque * d){
+	return d->head + d->size - d->tail - 1;
 }
 
-void * deque_at(struct deque * d,int at){
+void *
+deque_at(struct deque * d,int at){
 	if(isempty(d) || count_q(d) < at){
 		return NULL;
 	}
