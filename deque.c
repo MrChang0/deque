@@ -55,6 +55,7 @@ deque_pop(struct deque * d,int after){
 		d->head = (d->head-1)<0?(d->size -1): (d->head - 1);
 		pos = d->head; 
 	}
+
 	ret = d->q[pos].data;
 	d->q[pos].data = NULL;
 	return ret;
@@ -86,10 +87,10 @@ isfull(struct deque * d){
 void
 deque_push(struct deque * d,void * data,int after){
 	int pos = 0;
-
 	if(isfull(d)){
 		resize_q(d,(d->size-1)*2+1);
 	}
+	
 	if(after){
 		pos = d->tail;
 		d->tail = (d->tail-1) < 0 ? d->size-1: d->tail-1;
@@ -115,6 +116,7 @@ deque_at(struct deque * d,int at){
 	return d->q[pos].data;
 }
 
+#ifdef DEBUG
 void
 deque_dump(struct deque * d,uprint print){
 	if(isempty(d)){
@@ -128,3 +130,4 @@ deque_dump(struct deque * d,uprint print){
 		i = (i+1) % d->size;
 	}
 }
+#endif

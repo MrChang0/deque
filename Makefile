@@ -1,6 +1,6 @@
 .PHONY:clean all
 CC=gcc
-CFLAGS=-Wall -g -std=c99 -O0
+CFLAGS=-DDEBUG -Wall -g -std=c99 -O0 
 BIN=deque
 all:$(BIN)
 %.o:%.c
